@@ -1,0 +1,44 @@
+﻿sphinxDemo1\_support
+====================
+
+.. automodule:: sphinxDemo1_support
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      load_tcl_themes
+      main
+      on_ComboSelect
+      on_btnAbout
+      on_btnDelete
+      on_btnEdit
+      on_btnExit
+      on_btnFind
+      on_btnHelp
+      on_btnSave
+      on_popClear
+      on_popCloseMenu
+      on_popCopy
+      on_popCut
+      on_popPaste
+      startup
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

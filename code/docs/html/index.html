@@ -1,0 +1,232 @@
+
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Welcome to the documentation for Sphinx Demo Program! &#8212; Sphinx Demo Program 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Sphinx Demo Program 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to the documentation for Sphinx Demo Program!</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="welcome-to-the-documentation-for-sphinx-demo-program">
+<h1>Welcome to the documentation for Sphinx Demo Program!<a class="headerlink" href="#welcome-to-the-documentation-for-sphinx-demo-program" title="Permalink to this heading">¶</a></h1>
+<a class="reference internal image-reference" href="_images/Main.png"><img alt="_images/Main.png" src="_images/Main.png" style="width: 500.0px; height: 360.5px;" /></a>
+<hr class="docutils" />
+<p>The purpose of this program is to demonstrate how to use Python docstrings for automatic documentation from your source code.</p>
+<p>This program is basically a GUI skeleton that does nothing.  However, it does provide an easy way to show the process.</p>
+<blockquote>
+<div><p>This program was created for my How-To Python article in <a class="reference external" href="https://fullcirclemagazine.org/">Full Circle Magazine</a> # 205 (May 2024) .</p>
+<p>The source code and all relevant files are available on my github repository at <a class="reference external" href="https://github.com/gregwa1953/FCM-205">https://github.com/gregwa1953/FCM-205</a></p>
+</div></blockquote>
+<section id="a-bit-of-history">
+<h2>A bit of History<a class="headerlink" href="#a-bit-of-history" title="Permalink to this heading">¶</a></h2>
+<p>This month’s article was inspired by one of the PAGE users on the PAGE Discord forum and someone whom I consider a good friend, Professor Roberto Machorro Mejía, who started using PAGE last school year.  He teaches at <strong>UNAM</strong>, a public university, the largest in Mexico.  He was using PAGE to create a GUI for a project he and his students were working on.  Long story short, he has been reading Full Circle Magazine for a while now and he sent me a note that he really enjoyed my article on Sphinx in last month’s issue.  He was wondering, however, if <strong>Sphinx</strong> worked directly on a source file.  So, I decided to write about how to make this happen.</p>
+</section>
+<section id="before-you-get-started">
+<h2>Before you get started<a class="headerlink" href="#before-you-get-started" title="Permalink to this heading">¶</a></h2>
+<p>Once you get the <strong>Sphinx</strong> instance set up for your program (see my How-To Python article in last month’s issue (FCM # 204), you will need to edit the config.py file to include a few things.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span class="c1"># add these directories to sys.path here.</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/greg/Desktop/pagetests/Page8.1f/SphinxDemo1&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="s1">&#39;sphinx.ext.duration&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.autosummary&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Notice the <em>sys.path.append()</em> , which adds the folder for my source file.  In this case the file in question is <strong>sphinxDemo1_support.py</strong> .  You will need to change this line to match your source code path.</p>
+</div>
+<p>I am going to only be talking about documenting the <strong>support.py</strong> module.  The <strong>.tcl</strong> file doesn’t support docstrings and it would be regenerated from scratch every time you make any changes to the GUI.  The same goes for the <strong>GUI.py</strong> file.</p>
+</section>
+<section id="doing-it-manually">
+<h2>Doing it manually<a class="headerlink" href="#doing-it-manually" title="Permalink to this heading">¶</a></h2>
+<p>Of course you can do the documentation of your functions and methods manually.  I’ll create a “dummy” entry for a fictitious <strong>Sphinx</strong> document.</p>
+<hr class="docutils" />
+<p>One of the best things about the program is for the user to have the ability to change themes at any time to any theme in the theme folder.  Of course, these are all .tcl themes.  Use the load_tcl_themes function to generate a list of all of the themes, then load this into a TCombobox values property.  Then bind the virtual <strong>&lt;&lt;ComboboxSelected&gt;&gt;</strong> event to the TCombobox providing a callback function whenever the user selects something from the TCombobox list.  Here is the <code class="docutils literal notranslate"><span class="pre">sphinxDemo1_support.on_ComboSelect()</span></code> function</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sphinxDemo1_support.on_ComboSelect">
+<span class="sig-prename descclassname"><span class="pre">sphinxDemo1_support.</span></span><span class="sig-name descname"><span class="pre">on_ComboSelect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sphinxDemo1_support.on_ComboSelect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>event</em>) – The virtual event (“&lt;&lt;ComboboxSelected&gt;&gt;”)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Here is the code that will actually switch the theme to the user selection…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_ComboSelect</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">sty</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">_w49</span><span class="o">.</span><span class="n">comboThemes</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Combobox Select: </span><span class="si">{</span><span class="n">selected</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">sty</span><span class="o">.</span><span class="n">theme_use</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>And that works fine.  However, you have to do this for every function and if any of the functions change you have to go into your <strong>Sphinx</strong> .rst file and update it.  This can really take a toll on you and your team.  Why not just add docstrings into the code and let <strong>Sphinx</strong> do it for you?</p>
+</section>
+<section id="doing-it-automatically">
+<h2>Doing it automatically<a class="headerlink" href="#doing-it-automatically" title="Permalink to this heading">¶</a></h2>
+<p>In your source file, create <a class="reference external" href="https://peps.python.org/pep-0257/#abstract">docstrings</a> for each of the functions (or methods) that you want to autodocument.  Example…</p>
+<p>Here’s information about the <code class="docutils literal notranslate"><span class="pre">sphinxDemo1_support.load_tcl_themes()</span></code> function:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sphinxDemo1_support.load_tcl_themes">
+<span class="sig-prename descclassname"><span class="pre">sphinxDemo1_support.</span></span><span class="sig-name descname"><span class="pre">load_tcl_themes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sphinxDemo1_support.load_tcl_themes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will load all tcl theme files located in &lt;folder&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>String</em>) – string containing the location of the theme folder.</p></li>
+<li><p><strong>silent</strong> (<em>Boolean</em>) – True/False - False will print the names of the theme being worked on.  True will supress the print.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/sphinxDemo1_support.html">sphinxDemo1_support</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Welcome to the documentation for Sphinx Demo Program!</a><ul>
+<li><a class="reference internal" href="#a-bit-of-history">A bit of History</a></li>
+<li><a class="reference internal" href="#before-you-get-started">Before you get started</a></li>
+<li><a class="reference internal" href="#doing-it-manually">Doing it manually</a><ul>
+<li><a class="reference internal" href="#sphinxDemo1_support.on_ComboSelect"><code class="docutils literal notranslate"><span class="pre">sphinxDemo1_support.on_ComboSelect()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doing-it-automatically">Doing it automatically</a><ul>
+<li><a class="reference internal" href="#sphinxDemo1_support.load_tcl_themes"><code class="docutils literal notranslate"><span class="pre">load_tcl_themes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="api.html"
+                          title="next chapter">API</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Sphinx Demo Program 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to the documentation for Sphinx Demo Program!</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, Gregory Walters.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    </div>
+  </body>
+</html>
